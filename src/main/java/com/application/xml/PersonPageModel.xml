@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagemodel SYSTEM "E:\IdeaProjects\vrmframework\src\main\java\org\vrmframework\dtd\ModelConfig.dtd">
+<pagemodel ref="com.application.realmodel.pagemodel.PersonPageModel" >
+
+
+	<datamodels>
+		<datamodel did = "familyServiceModel" dclass ="com.application.realmodel.datamodel.FamilyServiceModel"/>
+	</datamodels>
+
+	<situation sid="default"  sif="null">
+		<field fname = "name" fvalue="{currApply.name}" v-ref="familyServiceModel"/>
+		<field fname = "nation"   fvalue="{currApply.nation}"   v-ref="familyServiceModel" />
+		<field fname = "sex" fvalue="{currApply.age}"    v-ref="familyServiceModel"/>
+		<field fname = "birthDay" fvalue="{currApply.birthDay}" v-ref="familyServiceModel"/>
+		<field fname = "work" fvalue="{currApply.work}" v-ref="familyServiceModel"/>
+		<field fname = "school" fvalue="{currApply.school}" v-ref="familyServiceModel"/>
+		<field fname = "disable" fvalue="true" v-ref=""/>
+		<field fname = "check1" fvalue="true" v-ref=""/>
+		<field fname = "check2" fvalue="false" v-ref=""/>
+	</situation>
+
+	<situation sid="s1" sif="com.application.rule.PersonPageRule.isHasUnderAgeChild(String)">
+		<field fname = "name" fvalue="{currApply.name}" v-ref="familyServiceModel"/>
+		<field fname = "nation"   fvalue="{currApply.nation}"   v-ref="familyServiceModel" />
+		<field fname = "sex" fvalue="{currApply.age}"    v-ref="familyServiceModel"/>
+		<field fname = "birthDay" fvalue="{currApply.birthDay}" v-ref="familyServiceModel"/>
+		<field fname = "work" fvalue="{currApply.work}" v-ref="familyServiceModel"/>
+		<field fname = "school" fvalue="{currApply.school}" v-ref="familyServiceModel"/>
+		<field fname = "disable" fvalue="true" v-ref=""/>
+		<field fname = "check1" fvalue="true" v-ref=""/>
+		<field fname = "check2" fvalue="false" v-ref=""/>
+		<field fname = "underAgeChildren" fvalue="{child}" v-ref="familyServiceModel" />
+
+
+	</situation>
+
+
+
+</pagemodel>

@@ -1,0 +1,50 @@
+{
+  "address": {
+    "city": "成都",
+    "county": "武侯",
+    "province": "四川",
+    "street": "天府一街"
+  },
+  "annualIncome": "2000000",
+  "child": {
+    "age": "14",
+    "birthDay": "1999-01-01",
+    "idNo": "",
+    "name": "简单",
+    "nation": "CN",
+    "school": {
+      "educationalBackground": "本科",
+      "graduateFlag": "N",
+      "schoolName": "社大"
+    },
+    "sex": "男"
+  },
+  "familyNo": "1",
+  "father": {
+    "age": "41",
+    "birthDay": "1978-05-05",
+    "idNo": "1231564987984165",
+    "name": "简双",
+    "nation": "CN",
+    "sex": "男",
+    "work": {
+      "companyName": "宇宙集团",
+      "position": "CEO",
+      "salary": "1000000"
+    }
+  },
+  "mother": {
+    "age": "40",
+    "birthDay": "1979-08-05",
+    "idNo": "4564657498132134",
+    "name": "简爱",
+    "nation": "CN",
+    "sex": "女",
+    "work": {
+      "companyName": "太阳集团",
+      "position": "CEO",
+      "salary": "1000000"
+    }
+  },
+  "telephone": "1564-55123"
+}

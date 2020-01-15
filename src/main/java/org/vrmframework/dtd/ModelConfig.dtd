@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT pagemodel (datamodels,situation*)>
+<!ELEMENT datamodels (datamodel*)>
+<!ELEMENT datamodel EMPTY>
+<!ELEMENT situation (field*)>
+<!ELEMENT field EMPTY>
+
+
+<!ATTLIST datamodel
+        did  CDATA #REQUIRED
+        dclass	 CDATA #REQUIRED>
+
+<!ATTLIST pagemodel
+        ref CDATA #REQUIRED>
+
+
+<!ATTLIST situation
+        sid  CDATA #REQUIRED
+        sif	 CDATA #REQUIRED>
+
+<!ATTLIST field
+        fname    CDATA #REQUIRED
+        fvalue   CDATA #REQUIRED
+        v-ref    CDATA #REQUIRED
+        byMethod CDATA #IMPLIED>
