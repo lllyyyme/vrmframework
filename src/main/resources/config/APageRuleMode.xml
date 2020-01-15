@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<APageModel ref = "com.application.realmodel.pagemodel.APageModel">
+
+
+
+    <situation sid="default">
+        <field name="nickName" value ="currentUser.name" type ="String"/>
+        <field name="headIcon" value ="currentUser.headIcon" type ="String"/>
+        <field name="status" value ="currentUser.status" type ="String"/>
+        <field name="chatMessages" value ="currentUser.chatMessages" type ="java.util.List"/>
+    </situation>
+
+
+    <situation sid="situationA" sif="com.application.rule.AServiceRule.isSituationA()">
+
+
+
+
+    </situation>
+
+    <situation sid="situationB" sif="com.application.rule.AServiceRule.isSituationB()">
+
+
+
+
+    </situation>
+
+
+</APageModel>
