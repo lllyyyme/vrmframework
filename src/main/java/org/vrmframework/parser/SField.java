@@ -5,16 +5,17 @@ import org.vrmframework.DataModel;
 import java.lang.reflect.Method;
 
 
+
 public class SField {
 	private String fname;
 	private String fvalue;
 	private Method byFMethod;
 	private DataModel<?> valueRef;
-
+	
 	public SField() {
 		super();
 	}
-
+	
 	public SField(String fname, String fvalue, Method byFMethod, DataModel<?> valueRef) {
 		super();
 		this.fname = fname;
@@ -57,6 +58,6 @@ public class SField {
 		return "SField [fname=" + fname + ", fvalue=" + fvalue + ", byFMethod=" + byFMethod + ", valueRef=" + valueRef
 				+ "]";
 	}
-
-
+	
+	
 }

@@ -1,4 +1,4 @@
-package lib.nio.file;
+package uitls.file;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,17 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class NIOFile {
-
-	public static void main(String[] args) throws IOException {
-
-		writeNIO("D:\\test\\nio.txt", "ħ��magic.\n xyp9x   ��");
-
-		System.out.println("*---------------------*");
-		String filePath = "D:\\test\\aaa.txt";
-		String readNIO = readNIO(filePath);
-		System.out.println("read =>"+filePath);
-		System.out.println(readNIO);
-	}
 
 
 	public static String readNIO(String string) {
@@ -41,13 +30,6 @@ public class NIOFile {
 		return content.toString();
 	}
 
-	/***
-	 * java.nio д
-	 * 
-	 * @param string
-	 * @param string2
-	 * @throws IOException
-	 */
 	public static void writeNIO(String string, String string2) {
 
 		try (FileOutputStream fileOutputStream = new FileOutputStream(string, false);

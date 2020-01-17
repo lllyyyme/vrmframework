@@ -8,10 +8,12 @@
 		<datamodel did = "familyServiceModel" dclass ="com.application.realmodel.datamodel.FamilyServiceModel"/>
 	</datamodels>
 
+
 	<situation sid="default" sif="null">
 		<field fname = "street" fvalue="{address.street}" v-ref="familyServiceModel"/>
 		<field fname = "province" fvalue="{address.province}" v-ref="familyServiceModel"/>
 		<field fname = "city" fvalue="{address.city}" v-ref="familyServiceModel"/>
 		<field fname = "county" fvalue="{address.county}" v-ref="familyServiceModel"/>
 	</situation>
+
 </pagemodel>

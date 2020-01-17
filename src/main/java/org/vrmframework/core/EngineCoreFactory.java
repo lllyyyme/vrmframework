@@ -1,7 +1,6 @@
 package org.vrmframework.core;
 
-import org.vrmframework.ViewModel;
-import org.vrmframework.parser.PageModelParsedConfig;
+import org.vrmframework.PageModelParsedConfig;
 import org.vrmframework.parser.PageModelXmlParser;
 
 import java.io.File;
@@ -10,135 +9,93 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * ENGINE FACTORY
- */
 public class EngineCoreFactory {
 
-	private static EngineCore engineCore;
+	private static EngineCore EngineCore;
 
 	private static boolean isRunning = false;
 
-	private static final String DEFAULT_PACKAGE_PATH = "com\\application\\xml";
+	private static final String DEFAULT_PACKAGE_PATH = "wya\\projectap\\usingconfigable\\apply\\config\\xml\\";
 
-	public static EngineCore getEngineCore() {
-		if (null != engineCore)
-			return engineCore;
-		else
-			return engineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+	public static EngineCore getEngineCore() throws Exception {
+		if (null != EngineCore) {
+			return EngineCore;
+		} else
+			throw new Exception("core not initialized");
 	}
 
-	public static EngineCore getEngineCore(boolean ref) {
+	public static EngineCore initEngineCore(boolean ref) throws Exception {
 		if (ref) {
-			return engineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+			return EngineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
 		} else {
-			if (null != engineCore)
-				return engineCore;
-			else
-				return engineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+			if (null != EngineCore) {
+				return EngineCore;
+			} else {
+				return EngineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+			}
+
 		}
 	}
 
-	public static EngineCore initEngineCore(boolean ref) {
+	public static EngineCore initEngineCore(String filePath, boolean ref)
+			throws Exception {
 		if (ref) {
-			return engineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+			return EngineCore = new EngineCore(filePath);
 		} else {
-			if (null != engineCore)
-				return engineCore;
+			if (null != EngineCore)
+				return EngineCore;
 			else
-				return engineCore = new EngineCore(DEFAULT_PACKAGE_PATH);
+				return EngineCore = new EngineCore(filePath);
 		}
 	}
 
-	public static EngineCore initEngineCore(String url,boolean ref) {
-		if (ref) {
-			return engineCore = new EngineCore(url);
-		} else {
-			if (null != engineCore)
-				return engineCore;
-			else
-				return engineCore = new EngineCore(url);
-		}
-	}
-
-	public static EngineCore getEngineCore(String filePath, boolean ref)
-			throws	SecurityException {
-		if (ref) {
-			return engineCore = new EngineCore(filePath);
-		} else {
-			if (null != engineCore)
-				return engineCore;
-			else
-				return engineCore = new EngineCore(filePath);
-		}
-	}
-
-	/**
-	 * ENGINE
-	 */
 	public static class EngineCore {
-		private Map<Class<? extends ViewModel>, PageModelParsedConfig> pageModelParsedConfigs;
+		Map<Class<?>, PageModelParsedConfig> pageModelParsedConfigs;
 
-		private EngineCore(String xmlDirPath) {
+		private EngineCore(String xmlDirPath) throws Exception {
 			if (!isRunning) {
 				System.out.println("doInit");
 				initXmlConfig(xmlDirPath);
 				isRunning = true;
 			} else {
-				refreshEngine(xmlDirPath);
+				refreshEngin(xmlDirPath);
 				System.out.println("doRef");
 			}
 		}
 
-		private void refreshEngine(String xmlDirPath) {
-			this.pageModelParsedConfigs = null;
+		private void refreshEngin(String xmlDirPath) throws Exception {
+			pageModelParsedConfigs = null;
 			isRunning = false;
 			initXmlConfig(xmlDirPath);
 
 		}
 
-		private void initXmlConfig(String xmlDirPath) {
+		private void initXmlConfig(String xmlDirPath) throws Exception {
 			String path = getClass().getClassLoader().getResource("").getPath();
-			String url = path + xmlDirPath ;
+			String url = path + xmlDirPath;
 			File file = new File(url);
-			if(file.exists()){
-				File[] files = file.listFiles(new FileFilter() {
-					@Override
-					public boolean accept(File pathname) {
-						return pathname.getName().endsWith(".xml");
-					}
-				});
-				if(files.length > 0 ){
-					PageModelXmlParser pageModelXmlParser = new PageModelXmlParser();
-					pageModelParsedConfigs = new HashMap<>();
-					for (File file1 : files) {
-						PageModelParsedConfig parsePageModelObj = pageModelXmlParser.parsePageModelXml(url+file1.getName());
-						pageModelParsedConfigs.put(parsePageModelObj.getViewModel().getClass(), parsePageModelObj);
-					}
-					setPageModelParsedConfigs(pageModelParsedConfigs);
-
+			File[] listFiles = file.listFiles(new FileFilter() {
+				@Override
+				public boolean accept(File pathname) {
+					return pathname.getName().endsWith(".xml");
 				}
+			});
+			pageModelParsedConfigs = new HashMap<>();
+			for (File file2 : listFiles) {
+				PageModelXmlParser pageModelXmlParser = new PageModelXmlParser();
+				PageModelParsedConfig parsePageModelObj = pageModelXmlParser.parsePageModelXml(url + file2.getName());
+				pageModelParsedConfigs.put(parsePageModelObj.getBasePageModel().getClass(), parsePageModelObj);
 			}
-
 			isRunning = true;
 		}
 
-		public PageModelParsedConfig getPageModelParsedConfig(Class<? extends ViewModel> pageClass) {
+		public PageModelParsedConfig getPageModelParsedConfig(Class<?> pageClass) {
 			return pageModelParsedConfigs.get(pageClass);
-		}
-
-		public Map<Class<? extends ViewModel>, PageModelParsedConfig> getPageModelParsedConfigs() {
-			return pageModelParsedConfigs;
-		}
-
-		public void setPageModelParsedConfigs(
-				Map<Class<? extends ViewModel>, PageModelParsedConfig> pageModelParsedConfigs) {
-			this.pageModelParsedConfigs = pageModelParsedConfigs;
 		}
 
 		@Override
 		public String toString() {
-			return "EngineCore [pageModelParsedConfigs=" + pageModelParsedConfigs + "]";
+			return "EnginCore [pageModelParsedConfigs=" + pageModelParsedConfigs + "]";
 		}
 
 	}
