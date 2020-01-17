@@ -1,6 +1,6 @@
-package org.vrmframework.parser;
+package org.vrmframework;
 
-import org.vrmframework.ViewModel;
+import org.vrmframework.parser.Situation;
 
 import java.util.List;
 import java.util.Map;
@@ -10,18 +10,18 @@ public class PageModelParsedConfig {
 
 	private Map<String, Class<?>> datamodels;
 
-	private ViewModel viewModel;
+	private Object basePageModel;
 
 	private Class<?> claz4PageModel;
 
 	private List<Situation> situations;
 
-	public ViewModel getViewModel() {
-		return viewModel;
+	public Object getBasePageModel() {
+		return basePageModel;
 	}
 
-	public void setViewModel(ViewModel viewModel) {
-		this.viewModel = viewModel;
+	public void setBasePageModel(Object basePageModel) {
+		this.basePageModel = basePageModel;
 	}
 
 	public Class<?> getClaz4PageModel() {
@@ -50,7 +50,7 @@ public class PageModelParsedConfig {
 
 	@Override
 	public String toString() {
-		return "PageModelParsedObject [viewModel=" + viewModel + ", claz4PageModel=" + claz4PageModel
+		return "PageModelParsedObject [basePageModel=" + basePageModel + ", claz4PageModel=" + claz4PageModel
 				+ ", situations=" + situations + "]";
 	}
 

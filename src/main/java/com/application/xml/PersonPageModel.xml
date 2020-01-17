@@ -7,6 +7,11 @@
 		<datamodel did = "familyServiceModel" dclass ="com.application.realmodel.datamodel.FamilyServiceModel"/>
 	</datamodels>
 
+	<rules>
+		<rule rname="bPageRule" rclass ="com.application.rule.PersonPageRule"/>
+	</rules>
+
+
 	<situation sid="default"  sif="null">
 		<field fname = "name" fvalue="{currApply.name}" v-ref="familyServiceModel"/>
 		<field fname = "nation"   fvalue="{currApply.nation}"   v-ref="familyServiceModel" />
@@ -19,7 +24,7 @@
 		<field fname = "check2" fvalue="false" v-ref=""/>
 	</situation>
 
-	<situation sid="s1" sif="com.application.rule.PersonPageRule.isHasUnderAgeChild(String)">
+	<situation sid="s1" sif="bPageRule.hasUnderAge({0,rtype=java.lang.Integer})">
 		<field fname = "name" fvalue="{currApply.name}" v-ref="familyServiceModel"/>
 		<field fname = "nation"   fvalue="{currApply.nation}"   v-ref="familyServiceModel" />
 		<field fname = "sex" fvalue="{currApply.age}"    v-ref="familyServiceModel"/>

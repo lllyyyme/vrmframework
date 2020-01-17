@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 
-
 public class Situation {
 	
 	private String conditionValue;
@@ -13,9 +12,19 @@ public class Situation {
 	
 	private Class<?> claz4conditionMethod;
 	
-	private List<SField> fields;
+	private List<SField> fields;	 
+	
+	private List<Integer> mParams4condition;
 	
 
+	public List<Integer> getmParams4condition() {
+		return mParams4condition;
+	}
+
+
+	public void setmParams4condition(List<Integer> mParams4condition) {
+		this.mParams4condition = mParams4condition;
+	}
 
 
 	public Situation() {
@@ -67,6 +76,7 @@ public class Situation {
 		return claz4conditionMethod;
 	}
 
+
 	public void setClaz4conditionMethod(Class<?> claz4conditionMethod) {
 		this.claz4conditionMethod = claz4conditionMethod;
 	}
@@ -75,7 +85,11 @@ public class Situation {
 	@Override
 	public String toString() {
 		return "Situation [conditionValue=" + conditionValue + ", m4condition=" + m4condition
-				+ ", claz4conditionMethod=" + claz4conditionMethod + ", fields=" + fields + "]";
+				+ ", claz4conditionMethod=" + claz4conditionMethod + ", fields=" + fields + ", mParams4condition="
+				+ mParams4condition + "]";
 	}
+
+
+	
 
 }
