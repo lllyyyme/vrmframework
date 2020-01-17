@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.application.cache.FamilyData;
 import com.application.cache.Father;
 import com.application.cache.Person;
-import lib.nio.file.NIOFile;
+import uitls.file.NIOFile;
 import org.vrmframework.DataModel;
 
 
@@ -16,7 +16,7 @@ public class FamilyServiceModel implements DataModel<FamilyData> {
 
 
 	@Override
-	public FamilyData getData() {
+	public FamilyData getData(Object... params) {
 		String path = getClass().getClassLoader().getResource("").getPath();
 
 		String dataPath = path + "com\\application\\cache\\cache.json";

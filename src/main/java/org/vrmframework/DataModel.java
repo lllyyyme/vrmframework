@@ -2,8 +2,7 @@ package org.vrmframework;
 
 
 public interface DataModel<T> {
-	
-	T getData();
-	
-	
+
+	T getData(Object... params);
+
 }
